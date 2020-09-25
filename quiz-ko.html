@@ -1,0 +1,63 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="The HTML5 Herald">
+    <meta name="author" content="SitePoint">
+
+    <title>JavaScript Trivia</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.2.js"></script>
+
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Work+Sans:300,600);
+    </style>
+    <link rel="stylesheet" href="quiz.css"/>
+    <script src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.2.js"></script>
+    <script src='quiz-data.json'></script>
+    <script src='model.js'></script>
+    <script>
+        window.onload = function ()
+        {
+            $("#previous").hide();
+            $("#submit").hide();
+
+            ko.applyBindings(model);
+        }
+    </script>
+
+</head>
+<body>
+    <div class="slide" id='divContent'>
+     
+        <div class="quiz-container" id='divContainer'>
+            <div class='question' data-bind="text: question"></div>
+
+        <div class="answers"><label><input type='radio' name='answerX' id='answer_a' data-bind="click: answerClick('a')"/> a. <span data-bind="text: answerA"></span></label></div>
+        <div class="answers"><label><input type='radio' name='answerX' id='answer_b' data-bind="click: answerClick('b')"/> b. <span data-bind="text: answerB"></span></label></div>
+        <div class="answers"><label><input type='radio' name='answerX' id='answer_c' data-bind="click: answerClick('c')"/> c. <span data-bind="text: answerC"></label></span></div>
+        <div class="answers"><label><input type='radio' name='answerX' id='answer_d' data-bind="click: answerClick('d')"/> d. <span data-bind="text: answerD"></label></span></div>
+        </div>
+        <div id='divButtons' class="btn-custom">
+            <button type="button" class="btn btn-secondary" id="previous" data-bind="click: prev">Previous Question</button>
+            <button type="button" class="btn btn-success" id="next" data-bind="click: next">Next Question</button>
+            <button type="button" class="btn btn-warning" id="submit" data-bind="click: gradeQuiz">Submit Quiz</button>   
+        </div>
+
+    </div>
+    <div id='results' class='resultsClass'></div>
+            
+    </div>
+</body>
+</html>
